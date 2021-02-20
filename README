@@ -13,90 +13,16 @@ and scaling options to improve the OCR. You can correct mistakes in the =.srt=
 files with a text editor or a special subtitle editor.
 
 * Building
-You need tesseract. You also need cmake and a gcc to build it.
-With Ubuntu 12.10 you can install the dependencies with
-
-#+BEGIN_EXAMPLE
-  sudo apt-get install libtiff5-dev libtesseract-dev tesseract-ocr-eng build-essential cmake pkg-config
-#+END_EXAMPLE
+You need tesseract >= 4.1. You also need meson and gcc to build it.
 
 You should also install the tesseract data for the languages you want to use!
-Note that the support for tesseract 2 is deprecated and will be removed in the
-future!
 
 #+BEGIN_EXAMPLE
-  ./configure
-  make
-  sudo make install
+  meson build
+  ninja -C build
+  ninja -C build install
 #+END_EXAMPLE
 
-This should install the program vobsub2srt to =/usr/local/bin=.  You can
-uninstall vobsub2srt with =sudo make uninstall=.
-** Static binary
-I recommend using the dynamic binary! However if you really need a static binary
-you can add the flag =-DBUILD_STATIC=ON= to the =./configure= call.  But be
-aware that building static binaries can be quite troublesome. You need the
-static library files for tesseract, libtill, libavutils, and for their
-dependencies as well.  On Ubuntu 12.04 the static libraries are only included in
-the dev packages! You probably also need the Gold linker.
-
-For Ubuntu 12.04 you need the following extra packages:
-
-#+BEGIN_EXAMPLE
-  sudo apt-get install libleptonica-dev libpng12-dev libwebp-dev libgif-dev zlib1g-dev libjpeg-dev binutils-gold
-#+END_EXAMPLE
-
-If linking fails with undefined references then checking what other dependencies
-your version of leptonica has is a good starting point. You can do this by
-running =ldd /usr/lib/liblept.so= (or whatever the path to leptonica is on your
-system). Add those dependencies to =CMakeModules/FindTesseract.cmake=.
-
-** Ubuntu PPA and .deb packages
-I have created a [[https://launchpad.net/~ruediger-c-plusplus/+archive/vobsub2srt][PPA (Personal Package Archive)]] to make installation on
-Ubuntu easy.  Simply add the PPA to your apt-get sources and run an update and
-you can install the =vobsub2srt= package:
-
-#+BEGIN_EXAMPLE
-  sudo add-apt-repository ppa:ruediger-c-plusplus/vobsub2srt
-  sudo apt-get update
-  sudo apt-get install vobsub2srt
-#+END_EXAMPLE
-
-*** .deb (Debian/Ubuntu)
-You can build a *.deb package (Debian/Ubuntu) with =make package=.  The package
-is created in the =build= directory.
-
-You can also create a source package and upload it to your own PPA by using the
-=UploadPPA.cmake=. But this is only recommended for people experienced with
-cmake and creating Debian packages.
-
-** Homebrew
-Vobsub2srt contains a formula for [[http://mxcl.github.com/homebrew/][Homebrew]] (a package manager for OS X).  It can
-be installed by using the following commands:
-
-#+BEGIN_EXAMPLE
-  brew install --with-all-languages tesseract
-  brew install --HEAD https://github.com/ruediger/VobSub2SRT/raw/master/packaging/vobsub2srt.rb
-#+END_EXAMPLE
-
-** Gentoo ebuild
-An [[http://en.wikipedia.org/wiki/Ebuild][ebuild]] for Gentoo Linux is also available.  You can make it available to
-emerge with the following steps
-
-#+BEGIN_EXAMPLE
-  sudo mkdir -p /usr/local/portage/media-video/vobsub2srt/
-  wget https://github.com/ruediger/VobSub2SRT/raw/master/packaging/vobsub2srt-9999.ebuild
-  sudo mv vobsub2srt-9999.ebuild /usr/local/portage/media-video/vobsub2srt/
-  cd /usr/local/portage/media-video/vobsub2srt/
-  sudo ebuild vobsub2srt-999.ebuild digest
-#+END_EXAMPLE
-
-You should be able to install vobsub2srt with =emerge vobsub2srt= now.  If you
-want to use a newer version (3+) of tesseract you have to use layman.
-See [[https://github.com/ruediger/VobSub2SRT/issues/13][#13]] for details.
-** Arch AUR
-There also exist a [[https://wiki.archlinux.org/index.php/PKGBUILD][PKGBUILD]] file for Arch Linux in AUR:
-https://aur.archlinux.org/packages/vobsub2srt-git
 * Usage
 vobsub2srt converts subtitles in VobSub (=.idx= / =.sub=) format into subtitles
 in =.srt= format.  VobSub subtitles consist of two or three files called
