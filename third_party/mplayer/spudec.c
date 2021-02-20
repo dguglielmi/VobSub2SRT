@@ -1289,7 +1289,8 @@ static __attribute__((always_inline)) inline uint32_t __attribute__((const)) av_
 static void spudec_parse_extradata(spudec_handle_t *this,
                                    uint8_t *extradata, int extradata_len)
 {
-  uint8_t *buffer, *ptr;
+  uint8_t *buffer;
+  const char *ptr;
   unsigned int *pal = this->global_palette, *cuspal = this->cuspal;
   unsigned int tridx;
   int i;

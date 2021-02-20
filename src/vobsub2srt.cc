@@ -18,14 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// MPlayer stuff
-#include "mp_msg.h" // mplayer message framework
-#include "vobsub.h"
-#include "spudec.h"
-
-// Tesseract OCR
-#include "tesseract/baseapi.h"
-
 #include <unistd.h>
 #include <iostream>
 #include <string>
@@ -35,10 +27,17 @@
 #include <algorithm>
 #include <thread>
 #include <mutex>
-using namespace std;
+
+#include <tesseract/baseapi.h>
+
+#include "../third_party/mplayer/mp_msg.h"
+#include "../third_party/mplayer/vobsub.h"
+#include "../third_party/mplayer/spudec.h"
 
 #include "langcodes.hh"
 #include "cmd_options.hh"
+
+using namespace std;
 
 typedef void* vob_t;
 typedef void* spu_t;

@@ -17,12 +17,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "cmd_options.hh"
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
 #include <vector>
 #include <string>
+
+#include "cmd_options.hh"
 using namespace std;
 
 namespace {
