@@ -37,8 +37,8 @@
 #include <mutex>
 using namespace std;
 
-#include "langcodes.h++"
-#include "cmd_options.h++"
+#include "langcodes.hh"
+#include "cmd_options.hh"
 
 typedef void* vob_t;
 typedef void* spu_t;

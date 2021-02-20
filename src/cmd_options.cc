@@ -17,7 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "cmd_options.h++"
+#include "cmd_options.hh"
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
