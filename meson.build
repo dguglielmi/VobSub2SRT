@@ -6,6 +6,7 @@ project('vobsub2srt', 'cpp', 'c',
 
 subdir('src')
 subdir('third_party')
+subdir('data')
 subdir('docs')
 
 threads_dep = dependency('threads',
