@@ -178,9 +178,9 @@ int main(int argc, char **argv) {
   int max_threads = 0;
 
   {
-    /************************************************************************************
-     * Any option added here should be added to doc/vobsub2srt.1 and doc/completion.sh! *
-     ************************************************************************************/
+    /************************************************************************************************
+     * Any option added here should be added to docs/vobsub2srt.1 and data/completions/vobsub2srt ! *
+     ************************************************************************************************/
     cmd_options opts;
     opts.
       add_option("dump-images", dump_images, "dump subtitles as image files (<subname>-<number>.pgm).").
