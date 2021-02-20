@@ -166,7 +166,7 @@ bool cmd_options::parse_cmd(int argc, char **argv) const {
 }
 
 void cmd_options::help(char const *progname) const {
-  cerr << "usage: " << progname;
+  cerr << "Usage: " << progname;
   for(std::vector<option>::const_iterator i = pimpl->options.begin(); i != pimpl->options.end(); ++i) {
     cerr << " --" << i->name;
   }
