@@ -331,6 +331,7 @@ int main(int argc, char **argv) {
       ocr_thread_t *ocr_thread = NULL;
       if (threads.size() < static_cast<unsigned>(max_threads)) {
         TessBaseAPI *tess_base_api = init_tesseract(tesseract_data_path, tess_lang, blacklist);
+	tess_base_api->SetVariable("user_defined_dpi", "72");
         if (tess_base_api == NULL)
           return -1;
         ocr_thread = new ocr_thread_t(tess_base_api);
