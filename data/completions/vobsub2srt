@@ -1,4 +1,3 @@
-#!/bin/bash
 # -*- mode:sh; coding:utf-8; -*-
 #
 #  Bash completions for vobsub2srt(1).
@@ -19,7 +18,7 @@
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-have vobsub2srt &&
+_have vobsub2srt &&
 _vobsub2srt() {
     local cmd cur prev tmp arg
     cmd=${COMP_WORDS[0]}
