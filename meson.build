@@ -1,7 +1,7 @@
 project('vobsub2srt', 'cpp', 'c',
   version : '1.0pre7',
   license: [ 'GPL3+' ],
-   meson_version : '>= 0.50.0'
+   meson_version : '>= 0.49.0'
 )
 
 subdir('src')
@@ -15,7 +15,7 @@ threads_dep = dependency('threads',
 
 tesseract_dep = dependency('tesseract',
   method : 'pkg-config',
-  version : '>=4.1.0',
+  version : '>=4.0.0',
   required : true
 )
 
